@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthquake Data Center</title>
+    <link rel="stylesheet" href="../css/output.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <link rel="icon" href="../icon/earthquake.png">
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+    <header class="bg-transparent relative top-0 left-0 w-full flex items-center z-10">
+        <header class="bg-transparent relative top-0 left-0 w-full flex items-center justify-center z-10 text-white">
+            <div class="container">
+                <div class="flex items-center justify-between relative w-full max-w-screen-lg">
+                    <div class="px-7">
+                        <p class="font-bold text-lg block py-6 gradient">Earthquake Data Center</p>
+                    </div>
+
+                    <div class="flex items-center px-4">
+                        <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+                            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+                            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+                            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+                        </button>
+
+                        <nav id="nav-menu"
+                            class="absolute py-5 bg-primary shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none hidden">
+                            <ul class="block lg:flex">
+                                <li class="group">
+                                    <a href="index.html"
+                                        class="text-base text-dark py-2 mx-8 flex transition-colors duration-300 group-hover:text-dimWhite relative overflow-hidden">
+                                        Home
+                                        <span
+                                            class="absolute inset-x-0 bottom-0 h-0.5 bg-dimWhite origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                                    </a>
+                                </li>
+                                <li class="group">
+                                    <p
+                                        class="text-base text-dark py-2 mx-8 flex transition-colors duration-300 relative overflow-hidden gradient font-semibold">
+                                        Earthquake data
+                                    </p>
+                                </li>
+                                <li class="group">
+                                    <a href="portfolio.html"
+                                        class="text-base text-dark py-2 mx-8 flex transition-colors duration-300 group-hover:text-dimWhite relative overflow-hidden">
+                                        About me
+                                        <span
+                                            class="absolute inset-x-0 bottom-0 h-0.5 bg-dimWhite origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </header>
+
+    <section id="data" class="flex my-6 lg:my-10 text-white mx-6 lg:mx-32 relative flex-col">
+        <div class="container mx-auto px-4 py-8 lg:flex lg:justify-between z-[1]">
+            <div class="max-w-lg mx-auto mb-8 lg:mb-0 lg:mr-4">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <h1 class="text-2xl font-bold px-6 py-4 bg-gray-700 text-vwData">Percentage of Earthquakes by
+                        Continent</h1>
+                    <div class="p-6">
+                        <center>
+                            <canvas id="earthquakeChart" class="mb-8"></canvas>
+                        </center>
+                    </div>
+                </div>
+            </div>      
+            <div class="max-w-lg mx-auto">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <h1 class="text-2xl font-bold px-6 py-4 bg-gray-700 text-vwData">10 Biggest Earthquakes Around the
+                        World</h1>
+                    <div class="p-6">
+                        <center>
+                            <canvas id="biggestEarthquakesChart" class="mb-8"></canvas>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute z-[0] w-[100%] h-[100%] top-0 gradientA opacity-15"></div>
+        <div class="absolute z-[0] w-[100%] h-[100%] rounded-full gradientB bottom-10 opacity-20"></div>
+        <div class="absolute z-[0] w-[100%] h-[100%] right-20 bottom-20 gradientC opacity-10"></div>
+    </section>
+    <hr class="border-gray-700">
+    <div class="bg-gray-800 pt-4 flex-col">
+        <h1 class="font-poppins font-bold text-vwData gradient text-center mb-4 mt-10 uppercase">Data by Continent :</h1>
+        <hr class="border-slate-600 mx-16">
+        <div class="container mx-auto px-4 py-8 lg:flex lg:flex-wrap">
+            <div class="relative mb-10 w-full">
+                <input type="text" placeholder="Search continent"
+                    class="bg-gray-700 text-white w-full px-4 py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+                    id="searchInput">
+                <button
+                    class="absolute inset-y-0 right-0 px-4 py-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600"
+                    onclick="search()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.5 15.5l5.5 5.5">
+                        </path>
+                        <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                    </svg>
+                </button>
+                <button class="absolute inset-y-0 right-14 px-4 py-2 text-white rounded-r-lg hover:text-dimWhite"
+                    onclick="clearSearch()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="max-w-lg mx-auto mb-8 lg:w-1/2" id="asia">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <h1 class="text-2xl font-bold px-6 py-4 bg-gray-700 text-vwData">10 Biggest Earthquakes in Asia</h1>
+                    <div class="p-6">
+                        <center>
+                            <canvas id="asiaEarthquakeChart" class="mb-8"></canvas>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-lg mx-auto mb-8 lg:w-1/2" id="africa">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <h1 class="text-2xl font-bold px-6 py-4 bg-gray-700 text-vwData">10 Biggest Earthquakes in Africa
+                    </h1>
+                    <div class="p-6">
+                        <center>
+                            <canvas id="africaEarthquakeChart" class="mb-8"></canvas>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-lg mx-auto mb-8 lg:w-1/2" id="europe">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <h1 class="text-2xl font-bold px-6 py-4 bg-gray-700 text-vwData">10 Biggest Earthquakes in Europe
+                    </h1>
+                    <div class="p-6">
+                        <center>
+                            <canvas id="europeEarthquakeChart" class="mb-8"></canvas>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-lg mx-auto mb-8 lg:w-1/2" id="north-america">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <h1 class="text-2xl font-bold px-6 py-4 bg-gray-700 text-vwData">10 Biggest Earthquakes in North
+                        America</h1>
+                    <div class="p-6">
+                        <center>
+                            <canvas id="north americaEarthquakeChart" class="mb-8"></canvas>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-lg mx-auto mb-8 lg:w-1/2" id="south-america">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <h1 class="text-2xl font-bold px-6 py-4 bg-gray-700 text-vwData">10 Biggest Earthquakes in South
+                        America</h1>
+                    <div class="p-6">
+                        <center>
+                            <canvas id="south americaEarthquakeChart" class="mb-8"></canvas>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-lg mx-auto mb-8 lg:w-1/2" id="oceania">
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <h1 class="text-2xl font-bold px-6 py-4 bg-gray-700 text-vwData">10 Biggest Earthquakes in Oceania
+                    </h1>
+                    <div class="p-6">
+                        <center>
+                            <canvas id="oceaniaEarthquakeChart" class="mb-8"></canvas>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../javascript/searchBar.js"></script>
+    <script src="../javascript/data.js"></script>
+    <script src="../javascript/script.js"></script>
+</body>
+
+</html>

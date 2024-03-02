@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="../css/output.css">
+  <link rel="icon" href="../icon/earthquake.png">
+</head>
+
+<body class="bg-gray-900">
+  <header class="bg-transparent relative top-0 left-0 w-full flex items-center justify-center z-10 text-white">
+    <div class="container">
+      <div class="flex items-center justify-between relative w-full max-w-screen-lg">
+        <div class="px-7">
+          <p class="font-bold text-base md:text-lg block py-6 gradient">Earthquake Data Center</p>
+        </div>
+
+        <div class="flex items-center px-4">
+          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+          </button>
+
+          <nav id="nav-menu"
+            class="absolute py-5 bg-primary shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none hidden">
+            <ul class="block lg:flex">
+              <li class="group">
+                <p
+                  class="text-base text-dark py-2 mx-8 flex transition-colors duration-300 relative overflow-hidden gradient font-semibold">
+                  Home
+                </p>
+              </li>
+              <li class="group">
+                <a href="data.html"
+                  class="text-base text-dark py-2 mx-8 flex transition-colors duration-300 group-hover:text-dimWhite relative overflow-hidden">
+                  Earthquake data
+                  <span
+                    class="absolute inset-x-0 bottom-0 h-0.5 bg-dimWhite origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </a>
+              </li>
+              <li class="group">
+                <a href="portfolio.html"
+                  class="text-base text-dark py-2 mx-8 flex transition-colors duration-300 group-hover:text-dimWhite relative overflow-hidden">
+                  About me
+                  <span
+                    class="absolute inset-x-0 bottom-0 h-0.5 bg-dimWhite origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section id="home" class="flex flex-row my-6 lg:my-10 text-white mx-7 sm:mx-10 lg:mx-32 relative">
+    <div class="absolute z-[0] w-[40%] h-[35%] top-0 gradientA"></div>
+    <div class="absolute z-[1] w-[20%] h-[40%] rounded-full gradientB bottom-10"></div>
+    <div class="absolute z-[0] w-[40%] h-[30%] right-20 bottom-20 gradientC"></div>
+
+    <div class="flex-1 flex-col flex xl:px-0 sm:px-16 px-2">
+      <div class="flex flex-row justify-between items-center w-full">
+        <h1 class="font-poppins font-semibold text-vw text-white h-[65%]">
+          Earthquake
+        </h1>
+      </div>
+      <h1 class="gradient font-poppins font-semibold text-vw h-[21%]">Data Statistic</h1>
+      <h1 class="font-poppins font-semibold text-vwCenter text-white w-full">
+        World Center
+      </h1>
+      <p
+        class="font-poppins font-normal text-dimWhite text-[6px] sm:text-[8px] md:text-[12.5px] max-w-md mt-5 text-justify">
+        This is a worldwide statistical website for earthquake data, offering historical analysis to empower users with
+        important information.
+      </p>
+      <button
+        class="text base font-semibold text-white border-2 border-blue-200 my-6 py-4 px-8 rounded-full hover:shadow-md hover:opacity-30 duration-300 ease-in-out h-10 flex items-center justify-center max-w-md">
+        <a href="data.html" class="my-5 text-[8px] sm:text-[10px] md:text-[13px]">Get Started !</a>
+      </button>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="w-full pt-4 border-t border-slate-600">
+      <p class="font-medium text-[6px] sm:text-[8px] md:text-[12.5px] text-slate-500 text-center pb-1">Created by
+        students of SMAN 1 Jatiluhur, using Tailwind CSS</p>
+      <a href="https://www.flaticon.com/" title="user icons">
+        <p class="font-medium text-[6px] sm:text-[8px] md:text-[11px] text-slate-500 text-center pb-4">Icons
+          created by Freepik - Flaticon</p>
+      </a>
+    </div>
+  </footer>
+  <script src="../javascript/script.js"></script>
+</body>
+
+</html>

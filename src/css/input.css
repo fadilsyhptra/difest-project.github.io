@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient {
+  background: radial-gradient(
+    64.18% 64.18% at 71.16% 35.69%,
+    #ffffff 0.89%,
+    #AD88C6 150%
+  );
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.hamburger-line {
+  @apply w-[30px] h-[2px] my-2 block bg-white;
+}
+
+.hamburger-active > span:nth-child(1) {
+  @apply rotate-45;
+}
+
+.hamburger-active > span:nth-child(2) {
+  @apply scale-0;
+}
+
+.hamburger-active > span:nth-child(3) {
+  @apply -rotate-45;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.fade-anim {
+  animation: fade-up 1s;
+}
+
+.navbar-fixed {
+  @apply fixed z-[9999] bg-white bg-opacity-0;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.gradientC {
+  background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #AD88C6 100%);
+  filter: blur(123px);
+}
+
+.gradienA {
+  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
+  filter: blur(900px);
+}
+
+.gradientB {
+  background: rgba(255, 255, 255, 0.6);
+  filter: blur(1000px);
+}
+
+.text-vw {
+  font-size: clamp(25px, 9vw, 60px);
+}
+
+.text-vwCenter {
+  font-size: clamp(23px, 8vw, 55px);
+}
+
+.text-vwData {
+  font-size: clamp(15px, 3vw, 25px);
+}
+
+footer {
+  margin-top: auto;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
