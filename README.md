@@ -30,7 +30,3 @@ The website provides real-time and historical earthquake information, allowing u
 🥉 3rd Place — DIFEST Competition  
 
 This project was developed as part of a competition and demonstrates my ability to build real-world applications using APIs and modern web technologies.
-
----
-
-## 📂 Project Structure
